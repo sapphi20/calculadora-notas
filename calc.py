@@ -1,5 +1,5 @@
 def promedio(notas):
-    return sum(notas) / len(notas)
+    return round(sum(notas) / len(notas))
 
 
 def examen(notas):
