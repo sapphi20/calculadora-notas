@@ -24,7 +24,8 @@ def handle(msg):
     list = mensaje.split(' ')
     for i in list:
         notas.append(int(i))
-    bot.sendMessage(chat_id, mensaje(notas))
+    respuesta = mensaje(notas)
+    bot.sendMessage(chat_id, respuesta)
 
 
 MessageLoop(bot, handle).run_as_thread()
