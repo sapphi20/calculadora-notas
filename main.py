@@ -6,16 +6,6 @@ from calc import *
 
 bot = telepot.Bot(config.TOKEN)
 
-def mensaje(notas):
-    if examen(notas) < 10:
-        return "¿Ah?"
-    if examen_segunda(notas) <= 70:
-        tu_promedio = "Tu promedio es " + str(promedio(notas)) + "."
-        nota_examen = "Necesitas un " + str(examen(notas)) + " en el examen"
-        segundo_examen = "Y un " + str(examen_segunda(notas)) + " en el examen de segunda."
-        return tu_promedio + " \n " + nota_examen + " \n " + segundo_examen
-    else:
-        return "Fuiste buena persona, lo siento."
 
 def handle(msg):
     chat_id = msg['chat']['id']
@@ -24,8 +14,12 @@ def handle(msg):
     list = mensaje.split(' ')
     for i in list:
         notas.append(int(i))
-    respuesta = mensaje(notas)
-    bot.sendMessage(chat_id, respuesta)
+    tu_promedio = "Tu promedio es " + str(promedio(notas)) + "."
+    nota_examen = "Necesitas un " + str(examen(notas)) + " en el examen"
+    segundo_examen = "Y un " + str(examen_segunda(notas)) + " en el examen de segunda."
+    bot.sendMessage(chat_id,
+                    tu_promedio + " \n " + nota_examen + " \n "
+                    + segundo_examen)
 
 
 MessageLoop(bot, handle).run_as_thread()
