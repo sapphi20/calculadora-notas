@@ -8,7 +8,7 @@ bot = telepot.Bot(config.TOKEN)
 
 def mensaje(notas):
     if examen(notas) < 10:
-        return "¯\_(ツ)_/¯"
+        return "¿Ah?"
     if examen_segunda(notas) <= 70:
         tu_promedio = "Tu promedio es " + str(promedio(notas)) + "."
         nota_examen = "Necesitas un " + str(examen(notas)) + " en el examen"
